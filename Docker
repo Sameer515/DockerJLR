@@ -1,13 +1,9 @@
+# Dockerfile.mysql
 FROM mysql:9.3.0
 
-
+# Copy initialization scripts into the Docker entrypoint directory
+# These scripts will be executed when the MySQL container starts for the first time
 COPY mysql/initdb.d/ /docker-entrypoint-initdb.d/
 
+# Ensure the scripts are executable (though the base MySQL image often handles this)
 RUN chmod -R 755 /docker-entrypoint-initdb.d
-FROM node:6-stretch
-
-RUN npm update
-RUN npm install
-EXPOSE 3001
-EXPOSE 9229
-ENTRYPOINT ["npm", "start"]
