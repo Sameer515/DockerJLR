@@ -1,7 +1,13 @@
-from mysql:9.3.0
+FROM mysql:9.3.0
 
- 
 
 COPY mysql/initdb.d/ /docker-entrypoint-initdb.d/
 
 RUN chmod -R 755 /docker-entrypoint-initdb.d
+FROM node:6-stretch
+
+RUN npm update
+RUN npm install
+EXPOSE 3001
+EXPOSE 9229
+ENTRYPOINT ["npm", "start"]
