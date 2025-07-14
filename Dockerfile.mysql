@@ -1,5 +1,5 @@
 # Dockerfile.mysql
-From mysql:9.3.0
+ mysql:9.3.0
 
 # Copy initialization scripts into the Docker entrypoint directory
 # These scripts will be executed when the MySQL container starts for the first time
